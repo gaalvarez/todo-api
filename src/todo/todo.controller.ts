@@ -4,11 +4,11 @@ const todoRouter = Router();
 
 todoRouter.get("/", async (request: Request, response: Response) => {
   try {
-    return [
+    response.status(200).send([
       { id: 1, title: "Ir a vacunarme", complete: false },
       { id: 1, title: "Terminar la tesis", complete: false },
       { id: 1, title: "Estudiar GIT", complete: true },
-    ];
+    ]);
   } catch (error) {
     console.error(error);
     response

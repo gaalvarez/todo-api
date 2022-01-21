@@ -4,7 +4,7 @@ let events = [{ id: 1, idEvent: 1, type: "modify" }];
 
 const eventRouter = Router();
 
-eventRouter.get("/", async (request: Request, response: Response) => {
+eventRouter.get("/all", async (request: Request, response: Response) => {
   try {
     response.status(200).send(events);
   } catch (error) {
@@ -28,25 +28,6 @@ eventRouter.post("/", async (request: Request, response: Response) => {
       events.push(newTodo);
       response.status(200).send(newTodo);
     }
-  } catch (error) {
-    console.error(error);
-    response
-      .status(500)
-      .send({ message: "Server error, contact to the admin", error });
-  }
-});
-
-eventRouter.put("/idEvent", async (request: Request, response: Response) => {
-  try {
-    const idEvent = +request.params.idEvent;
-    events = events.map((item) => {
-      if (idEvent === item.id) {
-        return { ...item, title: request.body.title };
-      } else {
-        return item;
-      }
-    });
-    response.status(200).send({ message: "Evento actualizado" });
   } catch (error) {
     console.error(error);
     response

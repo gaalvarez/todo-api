@@ -2,6 +2,8 @@
 
 ## Instalación
 
+
+### aporte de Juan
 ```bash
 npm install
 ```
